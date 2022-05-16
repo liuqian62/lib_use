@@ -2,11 +2,11 @@
 cmake_minimum_required(VERSION 2.8)
 
 # 项目信息
-project("first_stage")
+project("useEigen")
 
 # include路径
 include_directories(${PROJECT_SOURCE_DIR}/lib)
-
+include_directories("/usr/include/eigen3")
 # 设置可执行文件生成路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin)
 
@@ -23,4 +23,4 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=c++11")
 aux_source_directory(./src DIR_SRCS)
 
 # 指定生成目标
-add_executable(first_stage ${DIR_SRCS})
+add_executable(useEigen ${DIR_SRCS})
