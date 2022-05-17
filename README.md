@@ -11,7 +11,45 @@ how to run
 ```bash
 sh run_all.sh
 ```
+## 总结
+### CMakeLists.txt的编写
+* eigen
 
+```cmake
+include_directories("/usr/include/eigen3")
+```
+* ceres
+
+```cmake
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+find_package(Ceres REQUIRED)
+include_directories(${CERES_INCLUDE_DIRS})
+
+target_link_libraries(xxx ${CERES_LIBRARIES})
+```
+* g2o
+
+```cmake
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+find_package(G2O REQUIRED)
+include_directories(${G2O_INCLUDE_DIRS})
+
+target_link_libraries(xxx ${G2O_CORE_LIBRARY} ${G2O_STUFF_LIBRARY})
+```
+* OpenCV
+
+```cmake
+# set(CMAKE_PREFIX_PATH "/home/rich/third/opencv-3.4.0/release/installed/")
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+target_link_libraries(xxx ${OpenCV_LIBS})
+```
+* sophus
+```cmake
+find_package(Sophus REQUIRED)
+target_link_libraries(xxx Sophus::Sophus)
+```
 ## 注意事项
 * ceres 和g2o使用时需要[cmake](https://github.com/liuqian62/lib_use/tree/main/ceres/cmake)文件夹，并且在CMakeLists.txt中加入
 ```cmake
