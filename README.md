@@ -11,3 +11,9 @@ how to run
 ```bash
 sh run_all.sh
 ```
+
+## 注意事项
+* ceres 和g2o使用时需要[cmake](https://github.com/liuqian62/lib_use/tree/main/ceres/cmake)文件夹，并且在CMakeLists.txt中加入
+```cmake
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+```
