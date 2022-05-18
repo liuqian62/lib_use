@@ -38,6 +38,8 @@ target_link_libraries(xxx ${G2O_CORE_LIBRARY} ${G2O_STUFF_LIBRARY})
 ```
 * OpenCV
 
+
+`注意使用opencv提取SIFT和 SURF特征时，opencv版本要低于3.4.1或者contrib版本，后续版本因专利问题被移除了，使用时xfeature2d好像也很容易报错`
 ```cmake
 # set(CMAKE_PREFIX_PATH "/home/rich/third/opencv-3.4.0/release/installed/")
 find_package(OpenCV REQUIRED)
