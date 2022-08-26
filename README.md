@@ -52,6 +52,34 @@ target_link_libraries(xxx ${OpenCV_LIBS})
 find_package(Sophus REQUIRED)
 target_link_libraries(xxx Sophus::Sophus)
 ```
+* 安装多个版本sophus
+
+```bash
+git clone https://github.com/strasdat/Sophus.git
+cd Sophus
+git checkout a621ff  #版本回溯
+mkdir build && cd build 
+mkdir install
+cmake -D CMAKE_INSTALL_PREFIX=/home/rich/third/Sophus621/Sophus/build/install/ ..
+make
+sudo make install
+```
+编译报错
+打开so2.cpp
+```cpp
+//unit_complex_.real() = 1.;
+//unit_complex_.imag() = 0.;
+unit_complex_.real(1.); 
+unit_complex_.imag(0.);
+```
+修改cmake
+```cmake
+set(Sophus_INCLUDE_DIRS "/home/rich/third/Sophus621/Sophus/build/install/include")
+set(Sophus_LIBS "/home/rich/third/Sophus621/Sophus/build/install/lib")
+find_package( Sophus REQUIRED )
+include_directories( ${Sophus_INCLUDE_DIRS} )
+target_link_libraries(xxx /home/rich/third/Sophus621/Sophus/build/install/lib/libSophus.so)
+```
 ## 注意事项
 * ceres 和g2o使用时需要[cmake](https://github.com/liuqian62/lib_use/tree/main/ceres/cmake)文件夹，并且在CMakeLists.txt中加入
 ```cmake
