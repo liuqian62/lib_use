@@ -72,7 +72,7 @@ sudo make install
 unit_complex_.real(1.); 
 unit_complex_.imag(0.);
 ```
-修改cmake
+修改CMakeLists.txt
 ```cmake
 set(Sophus_INCLUDE_DIRS "/home/rich/third/Sophus621/Sophus/build/install/include")
 set(Sophus_LIBS "/home/rich/third/Sophus621/Sophus/build/install/lib")
